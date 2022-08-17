@@ -1,0 +1,24 @@
+version: '3'
+services:
+  mongodb-container:
+    image: mongo:latest
+    container_name: mongodb-container
+    command: [--auth]
+    environment:
+      # 时区上海
+      TZ: Asia/Shanghai
+      MONGO_INITDB_ROOT_USERNAME: root
+      MONGO_INITDB_ROOT_PASSWORD: =yUf4dXMUh7
+      MONGO_INITDB_DATABASE: chatroom
+      MONGO_USERNAME: mongou
+      MONGO_PASSWORD: mongou
+    restart: always
+    volumes:
+      - /data2/wuyongyu/mongo_data:/data/db
+      - ./mongo-init.sh:/docker-entrypoint-initdb.d/mongo-init.sh
+    ports:
+      - 27017:27017
+networks:
+  default:
+    external:
+      name: nsq_br

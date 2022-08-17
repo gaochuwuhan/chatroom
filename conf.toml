@@ -1,0 +1,29 @@
+env = "dev"
+
+[dev]
+
+db_enable = false
+mongo_uri = "mongodb://mongou:mongou@127.0.0.1:27017/chatroom"
+mongo_user = "mongou"
+mongou_pass = "mongou"
+
+
+
+[dev.log]
+level = "info"
+dir = "logs"
+prefix = "[chatroom]"
+
+
+
+[prod]
+
+db_enable = false
+mongo_uri = "mongodb://127.0.0.1:27017"
+
+
+
+[prod.log]
+level = "info"
+dir = "logs"
+prefix = "[app]"
