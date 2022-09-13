@@ -1,8 +1,9 @@
-package dto
+package dao
 
 import (
 	"context"
 	"fmt"
+	"go.mongodb.org/mongo-driver/bson"
 	"go.mongodb.org/mongo-driver/mongo"
 	"log"
 )
@@ -36,4 +37,23 @@ func InsertExample(){
 		return
 	}
 	fmt.Println("insert example,get objId:",objId)
+}
+
+func FindOneExample(){
+	coll:=Initcoll()
+	t:=new(TestDoc)
+	m:=bson.M{
+		"level":1,
+	}
+	result:=coll.FindOne(context.Background(),m)
+	if result.Err() != nil || result==nil{
+		log.Fatalf("find one error:%s",result.Err().Error())
+		return
+	}
+	err:=result.Decode(t)
+	if err!=nil{
+		log.Fatal("decode error")
+		return
+	}
+	fmt.Println("find one success, res is ", t)
 }

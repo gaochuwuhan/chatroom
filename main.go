@@ -2,15 +2,17 @@ package main
 
 import (
 	"chatroom/config"
-	"chatroom/internal/dto"
+	"chatroom/internal/dao"
 	"github.com/gaochuwuhan/goutils/initialize"
 )
 
 func main(){
 	initialize.InitService()
 	config.Initialize()
-	dto.GetMgoCli()
-	dto.InsertExample()
+	dao.GetMgoCli()
+	//dao.InsertExample()
+	dao.FindOneExample()
+	//dao.InitMongoData()
 
 }
 

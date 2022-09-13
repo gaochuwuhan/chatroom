@@ -1,4 +1,4 @@
-package dto
+package dao
 
 import (
 	"chatroom/config"
@@ -19,4 +19,8 @@ func GetMgoCli(){
 	if mgoCli==nil{
 		panic("InitMongoEngine failed")
 	}
+}
+
+func GetDB() *mongo.Client{
+	return mgoCli
 }
